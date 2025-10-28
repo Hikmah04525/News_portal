@@ -38,9 +38,6 @@ const Navbar : FC = ()=> {
                 }
             </ButtonGroup>
         </Box>
-            
-
-        
     )
 }
 export default Navbar
