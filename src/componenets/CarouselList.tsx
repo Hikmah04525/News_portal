@@ -1,36 +1,62 @@
-import {FC} from "react";
-import {Box, Typography, Card, Grid} from "@mui/material";
+import {FC} from "react"; 
+import {Box, Typography, Card, Grid, CardMedia} from "@mui/material";
+import { NewsType } from "../utils/Types";
 
-const CarouselList: FC = () => {
-    return (
-        <Box className="mt-8">
-        <Grid container spacing={2}>
-          {[...Array(5)].map((_, ind) => (
-            <Grid key={ind} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
-              <Card className="relative h-[200px]">
-                <Box className="bg-red-300 h-full"></Box>
-                <Box
-                  className="_carouselGradient"
-                  sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    height: "70px",
-                    width: "100%",
-                  }}
-                />
-                <Typography
-                  sx={{ fontFamily: "serif" }}
-                  className="absolute bottom-2 text-white text-[17px] line-clamp-3 px-3"
-                >
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy text
-                  ever since the 1500s,
-                </Typography>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    )
+interface CarouselListProps{
+    topHeadlines: NewsType[];
+    active: number
 }
+
+const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
+
+  const getNextFive = (active: number, topHeadline: NewsType[]) => {
+    const nextFive = [];
+
+    for (let i = 0; i < 5; i++) {
+      const index = (active + i + 1) % topHeadline.length;
+      nextFive.push(topHeadline[index]);
+    }
+    return nextFive;
+  };
+
+  const nextFiveHeadlines = getNextFive(active, topHeadlines);
+
+  // ✅ move return INSIDE the function
+  return (
+    <Box className="mt-8">
+      <Grid container spacing={2}>
+        {nextFiveHeadlines.map((item, ind) => (
+          
+            <Grid key={ind} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Card className="relative h-[200px]">
+
+              <CardMedia
+                component="img"
+                className="w-full aspect-[16/16]"
+                image={topHeadlines[ind]?.urlToImage} // fixed small typo here too
+              />
+
+              <Box
+                className="_carouselGradient"
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  height: "70px",
+                  width: "100%",
+                }}
+              />
+              <Typography
+                sx={{ fontFamily: "serif" }}
+                className="absolute bottom-2 text-white text-[17px] line-clamp-3 px-3"
+              >
+                {topHeadlines[ind]?.title}
+              </Typography>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+};
+
 export default CarouselList;

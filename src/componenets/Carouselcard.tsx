@@ -1,11 +1,23 @@
-import {Box, Card, Typography, CardContent} from "@mui/material";
+import {Box, Card, Typography, CardContent, CardMedia} from "@mui/material";
 import  { FC } from "react"
+import { NewsType } from "../utils/Types";
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-const Carouselcard : FC=()=>{
+interface CarouselCardType{
+    topHeadline: NewsType;
+    toggleActive: (direction:'next' | 'prev')=> void;
+}
+const Carouselcard : FC<CarouselCardType> = ({topHeadline, toggleActive})=>{
     return(
-        <Card className="grid grid-cols-2 boreder-2 shadow-none">
+        <Card className="relative grid grid-cols-2 boreder-2 shadow-none">
             <Box className='relative h-[360px]'>
-            <Box className="bg-red-300 w-full aspect-[16/10]"></Box>
+           
+            <CardMedia
+            component='img'
+            className="h-full"
+            image={topHeadline?.urlToImage}
+            />
             <Box 
                 className="_carouselGradient"
                 sx={{position:'absolute', bottom:0, height:'70px', width:'100%' }}
@@ -13,27 +25,37 @@ const Carouselcard : FC=()=>{
                 <Typography
                 sx={{fontFamily:'serif'}}
                 className="absolute bottom-2 text-white text-[22px] leading-8 line-clamp3 px-6">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                {topHeadline?.title}
                 </Typography>
             </Box>
             
             <CardContent className="relative">
-                <Typography className="text-xl font-serif line-clamp-4">
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                <Typography gutterBottom className="text-xl font-serif line-clamp-4">
+                {topHeadline?.description}
                 </Typography>
                 <Typography className="text-lg font-serif line-clamp-4">
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                {topHeadline?.content}
                 </Typography>
 
             <Box className="absolute bottom-2">
             <Typography className="text-xl font-serif line-clamp-4">
-                    source: ABC NEWS 
+                    source: {topHeadline?.source.name}
             </Typography>
             <Typography className="text-xl font-serif line-clamp-4">
-                date: 10/26/22025
+                date: {new Date(topHeadline?.publishedAt).toLocaleDateString()}
             </Typography>
             </Box>
             </CardContent>
+             {/* Navigation Buttons */}
+      <KeyboardArrowLeftIcon
+        className="absolute top-1/2 left-1 bg-neutral-800 text-white text-4xl rounded-full cursor-pointer"
+        onClick={() => toggleActive("prev")}
+      />
+      <KeyboardArrowRightIcon
+        className="absolute top-1/2 right-1 bg-neutral-800 text-white text-4xl rounded-full cursor-pointer"
+        onClick={() => toggleActive("next")}
+      />
+            
             </Card>
 
     )
