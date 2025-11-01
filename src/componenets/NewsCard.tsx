@@ -1,27 +1,38 @@
 import {FC} from "react";
-import {Box, Typography, Card, CardContent} from "@mui/material"
+import {Box, Typography, Card, CardContent, CardMedia} from "@mui/material"
+import { NewsType } from "../utils/Types";
 
-const NewsCard: FC = () => {
+
+interface NewsCardProps {
+    news: NewsType[];
+}
+const NewsCard: FC<NewsCardProps> = ({news}) => {
     return (
         <>
         <Box className="grid grid-cols-5 gap-3">
-            {[...Array(5)].map((_, ind) =>(
-                    <Card key={ind}>
-        <Box className="bg-red-300 aspect-[16/9] h-[180px]" />
-        <CardContent className="relative">
+            {news.slice(0,5).map((item, ind) =>(
+                    <Card key={ind} className="relative shadow-none border-2">
+        
+        <CardMedia 
+        className="aspect-[16/9] h-[180px]"
+          component="img"
+          image={item.urlToImage}
+          alt={item.title}
+        />
+        <CardContent className="mb-12">
             <Typography className="text-[16px] font-serif line-clamp-4">
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                {item.title}
             </Typography>
             <Typography className="text-[14px] font-serif line-clamp-4">
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                {item.description}
             </Typography>
 
-        <Box className="">
+        <Box className="absolute bottom-2">
             <Typography className="text-[14px] font-serif line-clamp-4">
-                source: ABC NEWS 
+                source: {item.source.name}
             </Typography>
             <Typography className="text-[14px] font-serif line-clamp-4">
-                date: 10/26/22025
+                date: {new Date(item.publishedAt).toLocaleDateString()}
             </Typography>
         </Box>
             </CardContent>

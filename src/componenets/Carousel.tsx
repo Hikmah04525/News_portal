@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import HeaderSection from "./HeaderSection";
 import Carouselcard from "./Carouselcard";
 import CarouselList from "./CarouselList";
@@ -11,7 +11,13 @@ const Carousel: FC = () => {
   const [active, setActive] = useState<number>(0);
   const [topHeadlines, setTopHeadlines] = useState<NewsType[]>([]);
 
+   const [error, setError] = useState<string | null>(null);
+   const [loading, setLoading] = useState<boolean>(true);
+  
+
   const fetchTopHeadlines = async () => {
+    setLoading(true);
+    setError(null);
     
       const response= await getTopHeadlines()
       console.log(response)
@@ -21,7 +27,13 @@ const Carousel: FC = () => {
           (res: NewsType) => res.urlToImage != null
         );
         setTopHeadlines(filterHeadlines);
+        setLoading(false);
       }
+
+      if (response.error){
+                setError(response.error.message || "Something went wrong");
+                
+              }
   };
 
   const toggleActive =(direction:'next' | 'prev')=>{
@@ -40,8 +52,16 @@ const Carousel: FC = () => {
     <Box>
       {/* Header */}
       <HeaderSection title="Top Headlines" />
-
-      {/* Carousel*/}
+      {
+            error ?
+            <Typography color="error" className="">{error} </Typography>
+            :
+            <>
+            {loading ?
+             <Typography>Loading...</Typography>
+             : 
+<Box>
+{/* Carousel*/}
       <Carouselcard
        toggleActive= {toggleActive}
        topHeadline={topHeadlines[active]} />
@@ -49,6 +69,16 @@ const Carousel: FC = () => {
       <CarouselList 
       active={active}
       topHeadlines={topHeadlines} />
+    </Box>
+}
+    </>
+
+
+     }
+
+
+
+      
     </Box>
   );
 };

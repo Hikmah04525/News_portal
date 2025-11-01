@@ -9,7 +9,7 @@ const Home : FC=()=>{
     return (
         <Box sx={{width:'90%', mx:"auto"}}>
         <Carousel />
-        <Box className="mt-4">
+        <Box className="mt-4 mb-24">
                 <Box>
                     {categories.map((item:string, ind:number)=>(
                         <HomeCardList key={ind} category={item}/>
