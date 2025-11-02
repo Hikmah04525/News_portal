@@ -2,12 +2,17 @@ import {Box, Typography, InputBase, Divider, Button, ButtonGroup, } from "@mui/m
 import  { FC } from "react"
 import SearchIcon from '@mui/icons-material/Search';
 import {categories} from '../utils/constants'
+import { useNavigate } from "react-router-dom";
+
 const Navbar : FC = ()=> {
+    const navigate = useNavigate();
     return (
        
         <Box className="bg-neutral-900 text-white">
             <Box sx={{display:'flex', alignItem:'center', justifyContent:'space-between', width:'90%', mx:'auto', py:'1' }}>
-        <Box sx= {{display:'flex', alignItems:'center', cursor:'pointer', fontSize:'1.5rem', fontFamily:'serif'}}>
+        <Box
+        onClick={() => navigate('/')}
+         sx= {{display:'flex', alignItems:'center', cursor:'pointer', fontSize:'1.5rem', fontFamily:'serif'}}>
             <Typography sx= {{fontFamily:'inherit', fontSize:'inherit', fontWeight:'bold'}}>
                 News
             </Typography>
@@ -29,6 +34,7 @@ const Navbar : FC = ()=> {
                 {
                     categories.map ((item, ind)=>(
                         <Button key={ind}
+                        onClick={() => navigate(`/explore`, {state:{category:item}})}
                         sx={{fontSize:'12px'}}
                         className="min-w-fit w-full hover:bg-neutral-900"
                         >

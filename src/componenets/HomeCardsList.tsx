@@ -56,8 +56,14 @@ const HomeCardList: FC<HomeCardListProps> = ({ category }) => {
         
         :
         <Box>
+
+        <Box className="grid grid-cols-5 gap-3">
+            {catNews.slice(0,5).map((item, ind) =>
             
-            <NewsCard  news={catNews} />
+            <NewsCard key={ind} item={item} />
+            )}
+            
+        </Box>
         </Box>
 }
             </>

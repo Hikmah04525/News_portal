@@ -1,6 +1,8 @@
 import { Box } from "@mui/material"
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from "./componenets/Navbar"
 import Home from "./pages/Home"
+import Explore from "./pages/Explore"
 
 function App() {
   
@@ -8,8 +10,14 @@ function App() {
   return (
     
       <Box>
-        <Navbar />
-        <Home/>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/explore" element={<Explore />} />
+          </Routes>
+          
+        </BrowserRouter>
       </Box>
    
   )

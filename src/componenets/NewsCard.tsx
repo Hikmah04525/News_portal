@@ -4,14 +4,13 @@ import { NewsType } from "../utils/Types";
 
 
 interface NewsCardProps {
-    news: NewsType[];
+    item: NewsType;
 }
-const NewsCard: FC<NewsCardProps> = ({news}) => {
+const NewsCard: FC<NewsCardProps> = ({item}) => {
     return (
         <>
-        <Box className="grid grid-cols-5 gap-3">
-            {news.slice(0,5).map((item, ind) =>(
-                    <Card key={ind} className="relative shadow-none border-2">
+
+                    <Card className="relative shadow-none border-2">
         
         <CardMedia 
         className="aspect-[16/9] h-[180px]"
@@ -37,9 +36,7 @@ const NewsCard: FC<NewsCardProps> = ({news}) => {
         </Box>
             </CardContent>
             </Card>
-                ))}
-            
-        </Box>
+                
         </>
 
     );
