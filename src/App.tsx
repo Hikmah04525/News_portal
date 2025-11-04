@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from "./componenets/Navbar"
 import Home from "./pages/Home"
 import Explore from "./pages/Explore"
+import Search from "./pages/Search"
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
           <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/search" element={<Search />} />
           </Routes>
           
         </BrowserRouter>
