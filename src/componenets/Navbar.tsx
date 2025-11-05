@@ -20,6 +20,11 @@ const Navbar : FC = ()=> {
                 navigate('/search', {state:{title:`what we search is ${search}`, query:search}});
             }
         }
+
+        const handleSearchIconClick = () => {
+            setSearch("")
+            navigate('/search', {state:{title:`what we search is ${search}`, query:search}});
+        }
     return (
        
     
@@ -36,7 +41,7 @@ const Navbar : FC = ()=> {
             </Typography>
         </Box>
         <Box sx={{display:'flex', alignItems:'center', gap:2, bgcolor:'black', color:"#c2c2c2",px:4 , borderRadius:'999px'}}>
-            <SearchIcon />
+            <SearchIcon onClick={handleSearchIconClick}/>
             <Divider orientation="vertical" variant="middle" flexItem  sx={{bgcolor:'gray'}}/>
             <InputBase 
             value={search}

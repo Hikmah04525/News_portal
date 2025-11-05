@@ -18,8 +18,13 @@ const Explore: FC = () => {
 
     const [categoryData, setCategoryData] = useState<CategoryDataType>({});
     const [loadMore, setLoadMore] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     const fetchNews = async () => {
+
+      setError(null);
+      setLoading(true);
 
       const currentCategoryData = categoryData[category] || { articles: [], pageNo: 1 };
       const pageNo = currentCategoryData.pageNo;
@@ -36,7 +41,13 @@ const Explore: FC = () => {
             },
         }));
         setLoadMore(currentCategoryData.articles.length + filteredNews.length < response.data.totalResults);
-    }
+        setLoading(false);
+      }
+      if (response.error) {
+        setError(response.error.message);
+        setLoading(false);
+      }
+
 }
 
 
@@ -53,7 +64,20 @@ const Explore: FC = () => {
         <Typography variant="h4" sx={{fontFamily:"serif", cursor:"pointer", mb:1}}>
             {category}
         </Typography>
-      {
+
+        {
+          error&&
+          <Typography color="error" mb={3}>
+            {error}
+          </Typography>
+        }
+
+        {
+          loading ?
+          <Typography mb={3}>Loading...</Typography>
+          : 
+          <>
+          {
         categoryData[category]?.articles?.length > 0  &&
         <ExploreCardList list={categoryData[category]?.articles} />
       }
@@ -71,6 +95,9 @@ const Explore: FC = () => {
         }
       
       </Box>
+          </>
+        }
+      
     </Container>
   );
 };
