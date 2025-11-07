@@ -1,6 +1,7 @@
 import {FC} from "react"; 
 import {Box, Typography, Card, Grid, CardMedia} from "@mui/material";
 import { NewsType } from "../utils/Types";
+import { Link } from "react-router-dom";
 
 interface CarouselListProps{
     topHeadlines: NewsType[];
@@ -28,6 +29,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
         {nextFiveHeadlines.map((item, ind) => (
           
             <Grid key={ind} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+              <Link to={topHeadlines[ind]?.url}>
             <Card className="relative h-[200px]">
 
               <CardMedia
@@ -52,6 +54,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
                 {topHeadlines[ind]?.title}
               </Typography>
             </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>

@@ -29,10 +29,10 @@ const Navbar : FC = ()=> {
        
     
         <Box className="bg-neutral-900 text-white">
-            <Box sx={{display:'flex', alignItem:'center', justifyContent:'space-between', width:'90%', mx:'auto', py:'1' }}>
+            <Box sx={{display:'flex', alignItem:'center', justifyContent:'space-between', width:{sm:'90%', xs:'95%'}, mx:'auto', py:'1' }}>
         <Box
         onClick={() => navigate('/')}
-         sx= {{display:'flex', alignItems:'center', cursor:'pointer', fontSize:'1.5rem', fontFamily:'serif'}}>
+         sx= {{display:'flex', alignItems:'center', cursor:'pointer', fontSize:{md:'1.5rem',sm:'1.25rem', xs:'1rem'}, fontFamily:'serif'}}>
             <Typography sx= {{fontFamily:'inherit', fontSize:'inherit', fontWeight:'bold'}}>
                 News
             </Typography>
@@ -40,14 +40,14 @@ const Navbar : FC = ()=> {
                 Daily
             </Typography>
         </Box>
-        <Box sx={{display:'flex', alignItems:'center', gap:2, bgcolor:'black', color:"#c2c2c2",px:4 , borderRadius:'999px'}}>
+        <Box sx={{display:'flex', alignItems:'center', gap:2, bgcolor:'black', color:"#c2c2c2",px:{sm:4, xs:3} , borderRadius:'999px'}}>
             <SearchIcon onClick={handleSearchIconClick}/>
             <Divider orientation="vertical" variant="middle" flexItem  sx={{bgcolor:'gray'}}/>
             <InputBase 
             value={search}
             onChange={handleChange}
             onKeyDown={handleKeyPress}
-            placeholder="serach" sx={{ color:'white', width:"350px", height:'2.5rem', fontSize:'1rem', fontFaimly:"serif", '&::placehlder':{ color:'#646464'}}}/>
+            placeholder="serach" sx={{ color:'white', width:{md:'350px', sm:'300px', xs:'180px'}, height:'2.5rem', fontSize:{sm:'1rem', xs:'0.875rem'}, fontFaimly:"serif", '&::placehlder':{ color:'#646464'}}}/>
         </Box>
         </Box>
         <ButtonGroup className="bg-neutral-800 w-full overflow-x-auto rounded-none" 
@@ -59,7 +59,7 @@ const Navbar : FC = ()=> {
                     categories.map ((item, ind)=>(
                         <Button key={ind}
                         onClick={() => navigate(`/explore`, {state:{category:item}})}
-                        sx={{fontSize:'12px'}}
+                        sx={{fontSize:{md:'16px', sm:'13px', xs:'12px'}, fontFamily:'serif'}}
                         className="min-w-fit w-full hover:bg-neutral-900"
                         >
                             {item}
