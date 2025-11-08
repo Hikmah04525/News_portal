@@ -24,7 +24,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
 
   // ✅ move return INSIDE the function
   return (
-    <Box className="mt-8">
+    <Box className="   mt-8">
       <Grid container spacing={2}>
         {nextFiveHeadlines.map((item, ind) => (
           
@@ -49,7 +49,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
               />
               <Typography
                 sx={{ fontFamily: "serif" }}
-                className="absolute bottom-2 text-white text-[17px] line-clamp-3 px-3"
+                className="absolute bottom-2 text-white md:text-[17px] sm:text-[15px]  text-[14px] line-clamp-3 px-3"
               >
                 {topHeadlines[ind]?.title}
               </Typography>

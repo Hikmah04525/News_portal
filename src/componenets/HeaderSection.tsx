@@ -12,15 +12,17 @@ const HeaderSection : FC<HeaderSectionProps> = ({title}) => {
    
     return(
         <Box sx={{display:'flex', justifyContent:'space-between', mt:4}}>
-            <Typography sx={{fontSize:'2.5rem', fontFamily:'serif', cursor:'pointer'}}>
+            <Typography sx={{fontSize:{md:'2.25rem', xs:'1.5rem'}, fontFamily:'serif', cursor:'pointer'}}>
             {title}
             </Typography>
             {title !== "Top Headlines" &&
 
-            <Button sx={{display:'flex', alignItem:'center', gap:1, color:'black', '&:hover':{textDecoration:'underline', textUnderlineOffset:'2px'}}}
+            <Button sx={{display:'flex', alignItem:'center', gap:1,
+                fontSize:{lg:'1rem', md:'0.875rem', xs:'0.8rem'},
+                color:'black', '&:hover':{textDecoration:'underline', textUnderlineOffset:'2px'}}}
             onClick={() => navigate('/explore', {state:{category:title}})}>
                 see All
-                <ArrowForwardIcon sx={{fontSize:'1.25rem'}}/>
+                <ArrowForwardIcon sx={{fontSize:{md:'1.25rem', xs:'1rem'}}}/>
             </Button>
 }
         </Box>

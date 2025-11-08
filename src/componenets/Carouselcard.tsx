@@ -11,10 +11,10 @@ interface CarouselCardType{
 }
 const Carouselcard : FC<CarouselCardType> = ({topHeadline, toggleActive})=>{
     return(
-        <Box className="relative w-full h-[360px] mb-10">
+        <Box className="relative ">
         <Link to={topHeadline.url}>
-        <Card className=" grid grid-cols-2 boreder-2 shadow-none">
-            <Box className='relative h-[360px]'>
+        <Card className=" grid lg:grid-cols-2 md:grid-cols-3 border-2 shadow-none">
+            <Box className='relative md:h-[360px] h-[280px] lg:col-span-1 md:col-span-2'>
            
             <CardMedia
             component='img'
@@ -27,24 +27,24 @@ const Carouselcard : FC<CarouselCardType> = ({topHeadline, toggleActive})=>{
                 />
                 <Typography
                 sx={{fontFamily:'serif'}}
-                className="absolute bottom-2 text-white text-[22px] leading-8 line-clamp3 px-6">
+                className="absolute bottom-2 text-white md:text-[22px] sm:text-xl text-lg leading-8 line-clamp3 px-6">
                 {topHeadline?.title}
                 </Typography>
             </Box>
             
             <CardContent className="relative">
-                <Typography gutterBottom className="text-xl font-serif line-clamp-4">
+                <Typography gutterBottom className="sm:text-xl text:lg font-serif line-clamp-4">
                 {topHeadline?.description}
                 </Typography>
-                <Typography className="text-lg font-serif line-clamp-4">
+                <Typography className="sm:text-xl text-lg font-serif line-clamp-4">
                 {topHeadline?.content}
                 </Typography>
 
-            <Box className="absolute bottom-2">
-            <Typography className="text-xl font-serif line-clamp-4">
+            <Box className="md:absolute bottom-2">
+            <Typography className="sm:text-xl text-lg font-serif line-clamp-4">
                     source: {topHeadline?.source.name}
             </Typography>
-            <Typography className="text-xl font-serif line-clamp-4">
+            <Typography className="sm:text-xl text-lg font-serif line-clamp-4">
                 date: {new Date(topHeadline?.publishedAt).toLocaleDateString()}
             </Typography>
             </Box>
