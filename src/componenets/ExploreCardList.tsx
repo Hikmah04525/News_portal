@@ -9,7 +9,7 @@ interface ExploreCardListProps {
 }
 const ExploreCardList : FC<ExploreCardListProps> = ({list})=> {
     return (
-        <Box className="grid grid-cols-5 gap-3">
+        <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
             {
                 list?.map((item, ind) => (
                     <NewsCard  item={item}/>
