@@ -61,7 +61,7 @@ const Explore: FC = () => {
 
   return (
     <Container max-width={false} sx={{width:"90%", mt:5, mb:10}}>
-        <Typography variant="h4" sx={{fontFamily:"serif", cursor:"pointer", mb:1}}>
+        <Typography variant="h4" sx={{fontSize:{md:'2.25rem', xs:'1.5rem'}, fontFamily:"serif", cursor:"pointer", mb:1}}>
             {category}
         </Typography>
 

@@ -45,7 +45,7 @@ const Search : FC = () => {
 
     return (
         <Container max-width={false} sx={{width:"90%", mt:5, mb:10}}>
-           <Typography variant="h4" sx={{fontFamily:"serif", mt:5, mb:1, textAlign:'center', cursor:'pointer'}}>
+           <Typography variant="h4" sx={{fontSize:{md:'2.25rem', xs:'1.5rem'}, fontFamily:"serif", mt:5, mb:1, textAlign:'center', cursor:'pointer'}}>
             {title}
            </Typography>
            {
