@@ -34,7 +34,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
 
               <CardMedia
                 component="img"
-                className="w-full aspect-[16/16]"
+                className="w-full aspect-[16/10]"
                 image={topHeadlines[ind]?.urlToImage} // fixed small typo here too
               />
 

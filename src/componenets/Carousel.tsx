@@ -6,6 +6,8 @@ import CarouselList from "./CarouselList";
 import axios from "axios";
 import { NewsType } from "../utils/Types";
 import { getTopHeadlines } from "../utils/api";
+import CarouselCardSkeleton from "./Skeletons/CarouselCardSkeleton";
+import CarouselListSkeleton from "./Skeletons/CarouselListSkeleton";
 
 const Carousel: FC = () => {
   const [active, setActive] = useState<number>(0);
@@ -58,8 +60,11 @@ const Carousel: FC = () => {
             :
             <>
             {loading ?
-             <Typography>Loading...</Typography>
-             : 
+            <>
+            <CarouselCardSkeleton />
+            <CarouselListSkeleton />
+            </> 
+            : 
 <Box>
 {/* Carousel*/}
       <Carouselcard
