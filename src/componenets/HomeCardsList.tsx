@@ -6,6 +6,7 @@ import NewsCard from "./NewsCard";
 import { NewsType } from "../utils/Types";
 import { useState } from "react";
 import { getTopHeadlines } from "../utils/api";
+import NewsCardSkeleton from "./Skeletons/NewsCardSkeleton";
 
 interface HomeCardListProps {
     category: string;
@@ -49,22 +50,22 @@ const HomeCardList: FC<HomeCardListProps> = ({ category }) => {
             <>
         { loading
         ?
-        <Box>
-           
-            <Typography> Loading...</Typography>
+        <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
+            {[...Array(5)].map((_, ind) => (
+                <NewsCardSkeleton key={ind}  />
+            ))}
         </Box>
         
         :
-        <Box>
 
-        <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
+            <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
             {catNews.slice(0,5).map((item, ind) =>
             
             <NewsCard key={ind} item={item} />
             )}
             
         </Box>
-        </Box>
+       
 }
             </>
         }
