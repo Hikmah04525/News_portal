@@ -19,7 +19,8 @@ export const getRequest=async <T> (url:string): Promise<ApiResponse<T>> => {
             const details= error.response?.data;
             return {
                 error:{
-                    message:'An error occurred while making the request',
+                    message:details?.message || error.message || "Request failed",
+
                     status,
                     details,
                     name: 'RequestError'

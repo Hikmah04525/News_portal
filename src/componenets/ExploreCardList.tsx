@@ -4,8 +4,10 @@ import { NewsType } from "../utils/Types";
 import NewsCard from "./NewsCard";
 
 
+
 interface ExploreCardListProps {
-    list?: NewsType[];
+    list?: NewsType[],
+    
 }
 const ExploreCardList : FC<ExploreCardListProps> = ({list})=> {
     return (
@@ -15,6 +17,7 @@ const ExploreCardList : FC<ExploreCardListProps> = ({list})=> {
                     <NewsCard  item={item}/>
                 ))
             }
+            
         </Box>
     )
 }

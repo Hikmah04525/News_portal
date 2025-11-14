@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { NewsType } from "../utils/Types";
 import { getByQuery } from "../utils/api";
 import ExploreCardList from "../componenets/ExploreCardList";
+import NewsCardSkeleton from "../componenets/Skeletons/NewsCardSkeleton";
 
 
 
@@ -55,14 +56,20 @@ const Search : FC = () => {
             </Typography>
            }
 
-            {
-          loading ?
-          <Typography mb={3}>Loading...</Typography>
+           
           : 
           <>
            {
-        searchData.length > 0  &&
-        <ExploreCardList list={searchData} />
+        searchData.length > 0 
+        ?
+        <ExploreCardList loading={loading} list={searchData} />
+        :
+        <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
+                      {[...Array(20)].map((_, ind) => (
+                          <NewsCardSkeleton key={ind}  />
+                      ))}
+          
+                     </Box>
       }
       <Box display='flex' justifyContent='center' mt={3}>
         
@@ -78,7 +85,7 @@ const Search : FC = () => {
       
       </Box>
           </>
-            }
+            
           
         </Container>
     )

@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { NewsType } from "../utils/Types";
 import { getTopHeadlines } from "../utils/api";
 import ExploreCardList from "../componenets/ExploreCardList";
+import NewsCardSkeleton from "../componenets/Skeletons/NewsCardSkeleton";
+
 
 
 
@@ -60,7 +62,7 @@ const Explore: FC = () => {
     }, [categoryData])
 
   return (
-    <Container max-width={false} sx={{width:"90%", mt:5, mb:10}}>
+    <Container maxWidth={false} sx={{width:"90%", mt:5, mb:10}}>
         <Typography variant="h4" sx={{fontSize:{md:'2.25rem', xs:'1.5rem'}, fontFamily:"serif", cursor:"pointer", mb:1}}>
             {category}
         </Typography>
@@ -72,36 +74,42 @@ const Explore: FC = () => {
           </Typography>
         }
 
-        {
-          loading ?
-          <Typography mb={3}>Loading...</Typography>
-          : 
-          <>
-          {
-        categoryData[category]?.articles?.length > 0  &&
-        <ExploreCardList list={categoryData[category]?.articles} />
-      }
-      <Box display='flex' justifyContent='center' mt={3}>
-        {
-          loadMore &&
-          <Button
-        variant="contained"
-        disableElevation
-      className="bg-neutral-700"
-      onClick={() => fetchNews()}
-      >
-        Load More
-      </Button>
+       
+          { loading ? 
+      <Box className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-3">
+            {[...Array(20)].map((_, ind) => (
+              <NewsCardSkeleton key={ind} />
+            ))}
+          </Box>
+          :
+  
+      <>
+        {categoryData[category]?.articles?.length > 0 &&
+          <ExploreCardList
+            list={categoryData[category]?.articles}
+          />
         }
-      
-      </Box>
-          </>
-        }
+       
+        <Box display="flex" justifyContent="center" mt={3}>
+          {loadMore && 
+            <Button
+              variant="contained"
+              disableElevation
+              className="bg-neutral-700"
+              onClick={() => fetchNews()}
+            >
+              Load More
+            </Button>
+          }
+        </Box>
+      </>
+}
       
     </Container>
   );
 };
 
-export default Explore;
+export default Explore; 
+
 
   
