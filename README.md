@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# 📰 News Portal – React + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and fully responsive News Portal built with **React**, **TypeScript**, and **Vite**.
+The project fetches real-time news using an external API and delivers a smooth browsing experience with category filtering, search functionality, carousels, and a clean UI.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✅ Core Features
 
-## Expanding the ESLint configuration
+* Fetch top headlines and category-based news
+* Search news in real time
+* Dynamic routing for Home, Explore, and Search pages
+* Fully responsive layout (mobile → tablet → desktop)
+* Carousel for top headlines
+* Load More functionality
+* Clickable news cards with detailed view
+* Responsive Navbar with adaptive menu
+* Error & Loading states built-in for all components
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🎨 UI & UX Enhancements
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Skeleton loaders (Carousel + News Cards)
+* Consistent design across all pages
+* Reusable components for cleaner architecture
+* Smooth navigation experience
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠️ Tech Stack
+
+### **Frontend**
+
+* React
+* TypeScript
+* Vite
+* React Router DOM
+* Axios
+
+### **Styling**
+
+* Tailwind CSS 
+
+### **Deployment**
+
+* Vercel
+
+---
+
+
+## ⚙️ Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Hikma04525/news_portal.git
+cd news_portal
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2️⃣ Install Dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 4️⃣ Run the Dev Server
+
+```bash
+npm run dev
+```
+
