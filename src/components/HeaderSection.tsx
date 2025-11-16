@@ -9,7 +9,7 @@ interface HeaderSectionProps {
 }
 const HeaderSection : FC<HeaderSectionProps> = ({title}) => {
     const navigate = useNavigate();
-   
+
     return(
         <Box sx={{display:'flex', justifyContent:'space-between', mt:4}}>
             <Typography sx={{fontSize:{md:'2.25rem', xs:'1.5rem'}, fontFamily:'serif', cursor:'pointer'}}>

@@ -26,7 +26,7 @@ const CarouselList: FC<CarouselListProps> = ({ topHeadlines, active }) => {
   return (
     <Box className="   mt-8">
       <Grid container spacing={2}>
-        {nextFiveHeadlines.map((item, ind) => (
+        {nextFiveHeadlines.map((_, ind) => (
           
             <Grid key={ind} size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
               <Link to={topHeadlines[ind]?.url}>

@@ -42,7 +42,7 @@ const HomeCardList: FC<HomeCardListProps> = ({ category }) => {
     
     return (
         <>
-             <HeaderSection title={category} />
+ <HeaderSection title={category} />
         {
             error ? 
             <Typography color="error" className="">{error} </Typography>
@@ -65,7 +65,7 @@ const HomeCardList: FC<HomeCardListProps> = ({ category }) => {
             )}
             
         </Box>
-       
+
 }
             </>
         }

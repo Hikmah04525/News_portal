@@ -54,7 +54,7 @@ The project fetches real-time news using an external API and delivers a smooth b
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Hikma04525/news_portal.git
+git clone https://github.com/Hikmah04525/news_portal.git
 cd news_portal
 ```
 

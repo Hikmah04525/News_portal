@@ -1,6 +1,6 @@
 import { Box } from "@mui/material"
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Navbar from "./componenets/Navbar"
+import Navbar from "./components/Navbar"
 import Home from "./pages/Home"
 import Explore from "./pages/Explore"
 import Search from "./pages/Search"

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, Card, CardContent, Skeleton } from "@mui/material";
+import { Card, CardContent, Skeleton } from "@mui/material";
 
 const NewsCardSkeleton: FC = () => {
   return (
@@ -19,4 +19,3 @@ const NewsCardSkeleton: FC = () => {
 };
 
 export default NewsCardSkeleton;
-

@@ -3,8 +3,8 @@ import { Box, Container, Typography, Button} from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { NewsType } from "../utils/Types";
 import { getByQuery } from "../utils/api";
-import ExploreCardList from "../componenets/ExploreCardList";
-import NewsCardSkeleton from "../componenets/Skeletons/NewsCardSkeleton";
+import ExploreCardList from "../components/ExploreCardList";
+import NewsCardSkeleton from "../components/Skeletons/NewsCardSkeleton";
 
 
 

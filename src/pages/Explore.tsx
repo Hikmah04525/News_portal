@@ -3,14 +3,14 @@ import { Box, Container, Typography, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { NewsType } from "../utils/Types";
 import { getTopHeadlines } from "../utils/api";
-import ExploreCardList from "../componenets/ExploreCardList";
-import NewsCardSkeleton from "../componenets/Skeletons/NewsCardSkeleton";
+import ExploreCardList from "../components/ExploreCardList";
+import NewsCardSkeleton from "../components/Skeletons/NewsCardSkeleton";
 
 
 
 
 
-interface CategoryDataType {
+export interface CategoryDataType {
     [key: string]: { articles: NewsType[], pageNo: number}
 }
 
@@ -52,10 +52,13 @@ const Explore: FC = () => {
 
 }
 
+useEffect(() => {
+  if (!category) return;   // prevent undefined warning
+  fetchNews();
+}, [category]);
 
-    useEffect (() => {
-        fetchNews()
-    }, [category]);
+
+    
 
     useEffect(()=>{
         console.log("shuemsm")
@@ -84,11 +87,11 @@ const Explore: FC = () => {
           :
   
       <>
-        {categoryData[category]?.articles?.length > 0 &&
-          <ExploreCardList
-            list={categoryData[category]?.articles}
-          />
-        }
+<ExploreCardList
+  list={categoryData[category]?.articles ?? []}
+/>
+
+
        
         <Box display="flex" justifyContent="center" mt={3}>
           {loadMore && 
